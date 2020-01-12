@@ -30,11 +30,13 @@ namespace MyClass
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                //.AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -57,6 +59,9 @@ namespace MyClass
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //The generated UI requires support for static files. To add static files to your app:
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();
