@@ -1,0 +1,2 @@
+# MyClass
+Project for NOIT
