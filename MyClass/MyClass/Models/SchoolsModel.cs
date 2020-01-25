@@ -13,6 +13,6 @@ namespace MyClass.Models
 
         public string City { get; set; }
 
-        public ICollection<EventsModel> Events { get; set; }
+        public ICollection<EventModel> Events { get; set; }
     }
 }

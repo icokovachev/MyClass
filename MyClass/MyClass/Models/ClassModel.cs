@@ -15,7 +15,7 @@ namespace MyClass.Models
 
         public ICollection<HomeworkModel> Homeworks { get; set; }
 
-        public ICollection<ExamsModel> Exams { get; set; }
+        public ICollection<ExamModel> Exams { get; set; }
 
         public ICollection<WeeklyScheduleModel> WeeklySchedule { get; set; }
     }
