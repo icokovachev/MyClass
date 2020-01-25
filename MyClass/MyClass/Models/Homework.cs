@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyClass.Models
 {
-    public class HomeworkModel
+    public class Homework
     {
     }
 }

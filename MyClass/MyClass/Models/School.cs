@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyClass.Models
 {
-    public class SchoolsModel
+    public class School
     {
         public long ID { get; set; }
 
@@ -13,6 +13,6 @@ namespace MyClass.Models
 
         public string City { get; set; }
 
-        public ICollection<EventModel> Events { get; set; }
+        public ICollection<Event> Events { get; set; }
     }
 }
