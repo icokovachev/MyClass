@@ -1,6 +1,6 @@
 ﻿namespace MyClass.Models
 {
-    public class EventModel
+    public class Event
     {
     }
 }
