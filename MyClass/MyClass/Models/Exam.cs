@@ -2,5 +2,6 @@
 {
     public class Exam
     {
+        public long ID { get; set; }
     }
 }

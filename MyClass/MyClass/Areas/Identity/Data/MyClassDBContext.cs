@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MyClass.Models;
 
 namespace MyClass.Data
 {
@@ -22,5 +23,19 @@ namespace MyClass.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+
+        public virtual DbSet<Student> Students { get; set; }
+
+        public virtual DbSet<Teacher> Teachers { get; set; }
+
+        public virtual DbSet<School> Schools { get; set; }
+
+        public virtual DbSet<Class> Classes { get; set; }
+
+        public virtual DbSet<Event> Events { get; set; }
+
+        public virtual DbSet<Homework> Homeworks { get; set; }
+
+        public virtual DbSet<WeeklySchedule> WeeklySchedules { get; set; }
     }
 }
