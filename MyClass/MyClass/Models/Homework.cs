@@ -7,5 +7,6 @@ namespace MyClass.Models
 {
     public class Homework
     {
+        public long ID { get; set; }
     }
 }
