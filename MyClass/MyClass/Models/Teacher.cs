@@ -7,7 +7,7 @@ namespace MyClass.Models
 {
     public class Teacher
     {
-        public long ID { get; set; }
+        public long IdentityID { get; set; }
 
         public string Subject { get; set; }
 

@@ -7,7 +7,7 @@ namespace MyClass.Models
 {
     public class Student
     {
-        public long ID { get; set; }
+        public long IdentityID { get; set; }
 
         public long ClassID { get; set; }
 
