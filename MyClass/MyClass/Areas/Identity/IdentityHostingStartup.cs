@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,8 +22,20 @@ namespace MyClass.Areas.Identity
                         context.Configuration.GetConnectionString("MyClassDBContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<MyClassDBContext>();
+                    .AddRoles<IdentityRole>()
+                    .AddEntityFrameworkStores<MyClassDBContext>()
+                    .AddDefaultTokenProviders();
+
+                services.AddSingleton<IEmailSender, EmailSender>();
             });
+        }
+    }
+
+    public class EmailSender : IEmailSender
+    {
+        public Task SendEmailAsync(string email, string subject, string message)
+        {
+            return Task.CompletedTask;
         }
     }
 }

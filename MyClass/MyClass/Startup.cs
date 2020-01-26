@@ -36,7 +36,7 @@ namespace MyClass
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                //.AddEntityFrameworkStores<ApplicationDbContext>();
+            //.AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -60,9 +60,6 @@ namespace MyClass
 
             app.UseRouting();
 
-            //The generated UI requires support for static files. To add static files to your app:
-            app.UseStaticFiles();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -73,6 +70,8 @@ namespace MyClass
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
