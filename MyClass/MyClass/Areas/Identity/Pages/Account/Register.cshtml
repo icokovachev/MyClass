@@ -32,6 +32,10 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                @Html.RadioButtonFor(m => m.Input.Role, "Student") Ученик
+                @Html.RadioButtonFor(m => m.Input.Role, "Teacher") Учител  <br />
+            </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>

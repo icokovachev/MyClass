@@ -12,6 +12,8 @@ using MyClass.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyClass.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace MyClass
 {
@@ -36,9 +38,13 @@ namespace MyClass
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                //.AddEntityFrameworkStores<ApplicationDbContext>();
+            //.AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUserIdentityProvider, UserIdentityProvider>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,9 +66,6 @@ namespace MyClass
 
             app.UseRouting();
 
-            //The generated UI requires support for static files. To add static files to your app:
-            app.UseStaticFiles();
-
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -73,6 +76,8 @@ namespace MyClass
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            SeedData.Initialize(app.ApplicationServices);
         }
     }
 }

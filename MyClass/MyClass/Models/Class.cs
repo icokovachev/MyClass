@@ -13,6 +13,8 @@ namespace MyClass.Models
 
         public long SchoolID { get; set; }
 
+        public ICollection<Student> Students { get; set; }
+
         public ICollection<Homework> Homeworks { get; set; }
 
         public ICollection<Exam> Exams { get; set; }
