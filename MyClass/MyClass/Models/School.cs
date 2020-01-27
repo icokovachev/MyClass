@@ -13,6 +13,10 @@ namespace MyClass.Models
 
         public string City { get; set; }
 
+        public ICollection<Class> Classes { get; set; }
+
+        public ICollection<Teacher> Teachers { get; set; }
+
         public ICollection<Event> Events { get; set; }
     }
 }
